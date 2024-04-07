@@ -6,7 +6,7 @@ import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../features/weather_data/data/models/weather_data_model.dart';
 
-String api_key = '0da5ce99a10b05e6a2feb1e4d60dc026';
+String api_key = ''; // TO DO - Add API key in env file
 
 abstract class WeatherDataRemoteDataSource {
 
