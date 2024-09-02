@@ -6,7 +6,7 @@ import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../features/weather_data/data/models/weather_data_model.dart';
 
-String apikey = '';
+String apikey = '0da5ce99a10b05e6a2feb1e4d60dc026';
 
 abstract class WeatherDataRemoteDataSource {
   Future<Either<Failure, WeatherModel>> getWeatherData(String location);
