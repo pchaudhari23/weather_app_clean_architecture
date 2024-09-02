@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app_clean_architecture/features/weather_data/presentation/bloc/weather_data_bloc.dart';
+import 'package:weather_app_clean_architecture/injection_container.dart';
+import 'features/weather_data/presentation/pages/weather_data_page.dart';
+import './injection_container.dart' as di;
 
-import 'features/weather_data/domain/usecases/get_weather_data.dart';
-
-GetWeatherData? getWeatherData;
-
-void main() {
-  // runApp(const MyApp());
-  getWeatherData?.call(const Params(location: 'Berlin'));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,28 +16,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Weather Application',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text('Weather Application Home Page'),
+    return BlocProvider(
+      create: (_) => sl<WeatherDataBloc>(),
+      child: MaterialApp(
+        title: 'Weather Application',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
         ),
-        body: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Enter location',
-              ),
-            ],
-          ),
-        ),
+        home: const WeatherScreen(),
       ),
     );
   }

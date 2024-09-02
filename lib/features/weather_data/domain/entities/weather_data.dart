@@ -10,13 +10,12 @@ class Weather extends Equatable {
     required this.location,
     required this.current,
   });
-     
+
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [request, location, current];
 }
 
-class Current extends Equatable{
+class Current extends Equatable {
   final String? observationTime;
   final int? temperature;
   final int? weatherCode;
@@ -52,15 +51,29 @@ class Current extends Equatable{
     required this.visibility,
     required this.isDay,
   });
-  
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
 
-  
+  @override
+  List<Object?> get props => [
+        observationTime,
+        temperature,
+        weatherCode,
+        weatherIcons,
+        weatherDescriptions,
+        windSpeed,
+        windDegree,
+        windDir,
+        pressure,
+        precip,
+        humidity,
+        cloudcover,
+        feelslike,
+        uvIndex,
+        visibility,
+        isDay
+      ];
 }
 
-class Location extends Equatable{
+class Location extends Equatable {
   final String? name;
   final String? country;
   final String? region;
@@ -82,28 +95,39 @@ class Location extends Equatable{
     required this.localtimeEpoch,
     required this.utcOffset,
   });
-  
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
 
+  @override
+  List<Object?> get props => [
+        name,
+        country,
+        region,
+        lat,
+        lon,
+        timezoneId,
+        localtime,
+        localtimeEpoch,
+        utcOffset
+      ];
 }
 
-class Request extends Equatable{
+class Request extends Equatable {
   final String? type;
   final String? query;
   final String? language;
   final String? unit;
-  
+
   const Request({
     required this.type,
     required this.query,
     required this.language,
     required this.unit,
   });
-  
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
 
+  @override
+  List<Object?> get props => [
+        type,
+        query,
+        language,
+        unit,
+      ];
 }

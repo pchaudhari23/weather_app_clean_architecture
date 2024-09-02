@@ -11,4 +11,7 @@ class GetWeatherDataEvent extends WeatherDataEvent {
   final String location;
 
   const GetWeatherDataEvent(this.location);
+
+  @override
+  List<Object> get props => [location];
 }
